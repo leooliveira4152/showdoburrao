@@ -12,7 +12,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} alt="logo" />
+        <img src={logo} alt="logo" style={styles.logo} />
         <p style={styles.baseText}>
           Show do <span style={styles.bigDumbText}>Burrão</span>
         </p>
@@ -30,17 +30,15 @@ function App() {
   );
 
   function useStyles(): Record<string, React.CSSProperties> {
+    const currentColor = randomColorPalette[clicks];
     return {
-      baseText: { fontSize: 40 },
-      bigDumbText: {
-        color: randomColorPalette[clicks],
-        ...(clicks === 0
-          ? {}
-          : {
-              WebkitTextStrokeWidth: 1,
-              WebkitTextStrokeColor: randomColorPalette[clicks - 1],
-            }),
+      logo: {
+        borderWidth: 10,
+        borderColor: currentColor,
+        borderStyle: "solid",
       },
+      baseText: { fontSize: 40 },
+      bigDumbText: { color: currentColor },
     };
   }
 }
