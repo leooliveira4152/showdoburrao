@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import logo from "../assets/logo.png";
 import "./App.css";
 import { Button } from "@mui/material";
+import { getFirestore } from "firebase/firestore";
 
 function App() {
+  const db = getFirestore();
   const randomColorPalette = ["white", "red", "blue", "green", "purple"];
 
   const [clicks, setClicks] = useState(0);
